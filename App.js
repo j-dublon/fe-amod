@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import * as Font from "expo-font";
+import { AppLoading } from "expo";
+
+const getFonts = () =>
+  Font.loadAsync({
+    sacramento: require("./assets/fonts/Sacramento-Regular.ttf"),
+  });
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  if (fontsLoaded) {
+    return (
+      <LinearGradient colors={["#360033", "#0b8793"]} style={{ flex: 1 }}>
+        <View>
+          <Text style={styles.title}>A Multitude of Drops</Text>
+        </View>
+      </LinearGradient>
+    );
+  } else {
+    return (
+      <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} />
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  title: {
+    textAlign: "center",
+    color: "white",
+    paddingTop: 50,
+    fontSize: 32,
+    fontFamily: "sacramento",
   },
 });
