@@ -6,10 +6,14 @@ export default function Home({ navigation }) {
   return (
     <LinearGradient colors={["#360033", "#0b8793"]} style={{ flex: 1 }}>
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate("Quotes")}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Quotes", { topic: "being" })}
+        >
           <Text style={styles.heading}>Being</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Quotes")}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Quotes", { topic: "longing" })}
+        >
           <Text style={styles.heading}>Longing</Text>
         </TouchableOpacity>
       </View>
