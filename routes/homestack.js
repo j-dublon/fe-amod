@@ -17,6 +17,8 @@ const screens = {
     screen: Quotes,
     navigationOptions: {
       headerTitle: () => <Header />,
+      headerTransparent: true,
+      headerLeft: null,
     },
   },
 };

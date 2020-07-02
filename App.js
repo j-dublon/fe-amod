@@ -6,7 +6,6 @@ import Navigator from "./routes/homestack";
 const getFonts = () =>
   Font.loadAsync({
     sacramento: require("./assets/fonts/Sacramento-Regular.ttf"),
-    josefin: require("./assets/fonts/JosefinSlab-SemiBold.ttf"),
   });
 
 export default function App() {
