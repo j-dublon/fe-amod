@@ -5,7 +5,7 @@ import Navigator from "./routes/homestack";
 
 const getFonts = () =>
   Font.loadAsync({
-    sacramento: require("./assets/fonts/Sacramento-Regular.ttf"),
+    tangerine: require("./assets/fonts/Tangerine-Regular.ttf"),
   });
 
 export default function App() {

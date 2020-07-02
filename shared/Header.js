@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerText: {
-    fontSize: 34,
-    fontFamily: "sacramento",
+    fontSize: 38,
+    fontFamily: "tangerine",
     color: "white",
     letterSpacing: 1.5,
   },

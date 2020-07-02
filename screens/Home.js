@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
     paddingTop: 90,
-    fontSize: 32,
-    fontFamily: "sacramento",
+    fontSize: 34,
+    fontFamily: "tangerine",
     letterSpacing: 1.5,
   },
   container: {
