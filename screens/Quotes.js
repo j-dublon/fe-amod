@@ -5,38 +5,54 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as api from "../utils/api";
 
 export default class Quotes extends Component {
-  state = {};
+  state = {
+    quote: {},
+    isLoading: true,
+  };
 
   componentDidMount() {
     const { navigation } = this.props;
     const topic = navigation.getParam("topic");
     api.fetchQuotes(topic).then((data) => {
-      this.setState(data);
+      this.setState({ quote: data, isLoading: false });
     });
   }
 
   render() {
     const { navigation } = this.props;
-    return (
-      <LinearGradient colors={["#360033", "#0b8793"]} style={{ flex: 1 }}>
-        <ScrollView>
+    const { body, author } = this.state.quote;
+    const { isLoading } = this.state;
+    if (isLoading) {
+      return (
+        <LinearGradient colors={["#360033", "#0b8793"]} style={{ flex: 1 }}>
           <View style={styles.container}>
-            <Text style={styles.quote}>"{this.state.body}"</Text>
-            <Text style={{ ...styles.quote, ...styles.author }}>
-              {this.state.author}
-            </Text>
+            <Text style={styles.quote}>...</Text>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-            <Text style={{ ...styles.quote, ...styles.return }}>Return</Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </LinearGradient>
-    );
+        </LinearGradient>
+      );
+    } else {
+      return (
+        <LinearGradient colors={["#360033", "#0b8793"]} style={{ flex: 1 }}>
+          <ScrollView>
+            <View style={styles.container}>
+              <Text style={styles.quote}>"{body}"</Text>
+              <Text style={{ ...styles.quote, ...styles.author }}>
+                {author}
+              </Text>
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+              <Text style={{ ...styles.quote, ...styles.return }}>Return</Text>
+            </TouchableOpacity>
+          </ScrollView>
+        </LinearGradient>
+      );
+    }
   }
 }
 
